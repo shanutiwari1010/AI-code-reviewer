@@ -3,6 +3,8 @@ import { router } from "./routes/ai.routes.js"; // Ensure correct import
 
 const app = express();
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });

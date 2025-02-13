@@ -1,16 +1,14 @@
 import generateContent from "../services/ai.service.js";
 
-const getResponse = async (req, res) => {
-  const prompt = req.query.prompt;
-  console.log(req.query, 10);
-  console.log(prompt, "prompt");
+const getReview = async (req, res) => {
+  const code = req.body.code;
 
-  if (!prompt) {
+  if (!code) {
     return res.status(400).send("Prompt is required");
   }
 
   try {
-    const response = await generateContent(prompt);
+    const response = await generateContent(code);
     console.log(response, 20);
     res.send(response);
   } catch (error) {
@@ -18,4 +16,4 @@ const getResponse = async (req, res) => {
   }
 };
 
-export default getResponse;
+export default getReview;
